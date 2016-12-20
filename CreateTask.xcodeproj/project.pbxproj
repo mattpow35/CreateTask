@@ -17,7 +17,7 @@
 		B8A35ED71E09800B00A26FC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8A35ED51E09800B00A26FC4 /* LaunchScreen.storyboard */; };
 		B8A35EE21E09800B00A26FC4 /* CreateTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A35EE11E09800B00A26FC4 /* CreateTaskTests.swift */; };
 		B8A35EED1E09800B00A26FC4 /* CreateTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A35EEC1E09800B00A26FC4 /* CreateTaskUITests.swift */; };
-		B8A35EFB1E09834200A26FC4 /* startScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A35EFA1E09834200A26FC4 /* startScreen.swift */; };
+		B8A35EFD1E09878800A26FC4 /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A35EFC1E09878800A26FC4 /* StartScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +54,7 @@
 		B8A35EE81E09800B00A26FC4 /* CreateTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CreateTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8A35EEC1E09800B00A26FC4 /* CreateTaskUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskUITests.swift; sourceTree = "<group>"; };
 		B8A35EEE1E09800B00A26FC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B8A35EFA1E09834200A26FC4 /* startScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = startScreen.swift; sourceTree = "<group>"; };
+		B8A35EFC1E09878800A26FC4 /* StartScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StartScreen.swift; path = ../StartScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,8 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				B8A35EC61E09800B00A26FC4 /* AppDelegate.swift */,
-				B8A35EFA1E09834200A26FC4 /* startScreen.swift */,
 				B8A35EC81E09800B00A26FC4 /* GameScene.sks */,
+				B8A35EFC1E09878800A26FC4 /* StartScreen.swift */,
 				B8A35ECA1E09800B00A26FC4 /* Actions.sks */,
 				B8A35ECC1E09800B00A26FC4 /* GameScene.swift */,
 				B8A35ECE1E09800B00A26FC4 /* GameViewController.swift */,
@@ -275,7 +275,7 @@
 			files = (
 				B8A35ECD1E09800B00A26FC4 /* GameScene.swift in Sources */,
 				B8A35ECF1E09800B00A26FC4 /* GameViewController.swift in Sources */,
-				B8A35EFB1E09834200A26FC4 /* startScreen.swift in Sources */,
+				B8A35EFD1E09878800A26FC4 /* StartScreen.swift in Sources */,
 				B8A35EC71E09800B00A26FC4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,6 +521,7 @@
 				B8A35EF31E09800B00A26FC4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B8A35EF41E09800B00A26FC4 /* Build configuration list for PBXNativeTarget "CreateTaskTests" */ = {
 			isa = XCConfigurationList;
@@ -529,6 +530,7 @@
 				B8A35EF61E09800B00A26FC4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B8A35EF71E09800B00A26FC4 /* Build configuration list for PBXNativeTarget "CreateTaskUITests" */ = {
 			isa = XCConfigurationList;
@@ -537,6 +539,7 @@
 				B8A35EF91E09800B00A26FC4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
