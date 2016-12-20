@@ -11,7 +11,7 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    var juggleBall = SKSpriteNode(imageNamed: "juggleBall")
+    var juggleBall = SKSpriteNode(imageNamed: "soccer ball")
  
     
     override func didMove(to view: SKView)
@@ -21,6 +21,7 @@ class GameScene: SKScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
+        juggleBall.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 10), at: CGPoint(x: 0, y:0))
     }
  
     
