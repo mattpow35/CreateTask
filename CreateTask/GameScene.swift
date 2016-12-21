@@ -58,7 +58,18 @@ class GameScene: SKScene {
             jugglePaddle.run(SKAction .moveTo(x: location.x, duration: 0.1))
         }
     }
- 
+    
+//    override func mouseUp(with event: NSEvent)
+//    {
+//        run(buttonPressAnimaiton)
+//        
+//        let reveal = SKTransitio.reveal(with.down, duration: 1)
+//        
+//        let newScen = EndScreen(size: CGSize(width: 1024, height: 768))
+//        
+//        scen.view.presentScene(EndScreen, transition: reveal)
+//    }
+// 
 
     
     override func update(_ currentTime: TimeInterval) {
