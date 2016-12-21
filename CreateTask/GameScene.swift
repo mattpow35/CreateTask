@@ -64,10 +64,10 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered\\
         
-        if juggleBall.position.y <= jugglePaddle.position.y - 70
-        {
-            self.viewController?.perfromSequeWithIdentifier("EndScreen", sneder: self)
-        }
+//        if juggleBall.position.y <= jugglePaddle.position.y - 70
+//        {
+//            self.viewController?.perfromSequeWithIdentifier("EndScreen", sneder: self)
+//        }
         
     }
 }
