@@ -14,13 +14,14 @@ class GameScene: SKScene {
     var juggleBall = SKSpriteNode()
     var jugglePaddle = SKSpriteNode()
     var difficultyLevel = Float()
+    var background = SKSpriteNode()
     
     override func didMove(to view: SKView)
     {
         difficultyLevel = 9.8
         juggleBall = self.childNode(withName: "juggleBall") as! SKSpriteNode
         jugglePaddle = self.childNode(withName: "jugglePaddle") as! SKSpriteNode
-        
+        background = self.childNode(withName: "soccerBackground-1") as! SKSpriteNode
         
         
         let border = SKPhysicsBody(edgeLoopFrom: self.frame)
