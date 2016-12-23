@@ -15,6 +15,8 @@ class GameScene: SKScene {
     var jugglePaddle = SKSpriteNode()
     var difficultyLevel = Float()
     var background = SKSpriteNode()
+    var score = Int()
+    var scoreLabel = SKLabelNode()
     
     override func didMove(to view: SKView)
     {
@@ -22,6 +24,12 @@ class GameScene: SKScene {
         juggleBall = self.childNode(withName: "juggleBall") as! SKSpriteNode
         jugglePaddle = self.childNode(withName: "jugglePaddle") as! SKSpriteNode
         background = self.childNode(withName: "soccerBackground-1") as! SKSpriteNode
+        scoreLabel = self.childNode(withName: "scoreLabel") as! SKLabelNode
+        
+        score = 0
+        
+        scoreLabel.text = "Score: \(score)"
+        
         
         
         let border = SKPhysicsBody(edgeLoopFrom: self.frame)
@@ -60,17 +68,8 @@ class GameScene: SKScene {
         }
     }
     
-//    override func mouseUp(with event: NSEvent)
-//    {
-//        run(buttonPressAnimaiton)
-//        
-//        let reveal = SKTransitio.reveal(with.down, duration: 1)
-//        
-//        let newScen = EndScreen(size: CGSize(width: 1024, height: 768))
-//        
-//        scen.view.presentScene(EndScreen, transition: reveal)
-//    }
-// 
+
+ 
 
     
     override func update(_ currentTime: TimeInterval) {
@@ -78,8 +77,10 @@ class GameScene: SKScene {
         
 //        if juggleBall.position.y <= jugglePaddle.position.y - 70
 //        {
-//            self.viewController?.perfromSequeWithIdentifier("EndScreen", sneder: self)
+//           
 //        }
+        
+        
         
     }
 }
