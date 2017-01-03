@@ -18,8 +18,19 @@ class GameScene: SKScene {
     var score = Int()
     var scoreLabel = SKLabelNode()
     
+    //category bit masks
+    let juggleBallCategory : UInt32 = 0x1 << 0
+    let BottomCategory : UInt32 = 0x1 << 1
+    let jugglePaddleCategory : UInt32 = 0x1 << 2
+    let borderCategory : UInt32 = 0x1 << 2
+    
     override func didMove(to view: SKView)
     {
+        let bottomRectangle = CGRect(x: frame.origin.x , y: frame.origin.y , width: frame.size.width, height: 1)
+        let bottom = SKNode()
+        bottom.physicsBody = SKPhysicsBody(edgeLoopFrom: bottomRectangle)
+        addChild(bottom)
+        
         difficultyLevel = 9.8
         juggleBall = self.childNode(withName: "juggleBall") as! SKSpriteNode
         jugglePaddle = self.childNode(withName: "jugglePaddle") as! SKSpriteNode
@@ -45,6 +56,8 @@ class GameScene: SKScene {
         gravityNode.strength = difficultyLevel
         
         addChild(gravityNode)
+        
+        addScore()
     
     }
     
@@ -68,6 +81,10 @@ class GameScene: SKScene {
         }
     }
     
+    func addScore()
+    {
+        
+    }
 
  
 
