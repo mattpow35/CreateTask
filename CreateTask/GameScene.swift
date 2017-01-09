@@ -16,6 +16,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var difficultyLevel = Float()
     var background = SKSpriteNode()
     var scoreLabel = SKLabelNode()
+    var score = Int()
     
     //category bit masks
     let juggleBallCategory : UInt32 = 0x1 << 0
@@ -25,6 +26,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView)
     {
+        
+        
         physicsWorld.gravity = CGVector(dx: 0.0, dy: 0.0)
         physicsWorld.contactDelegate = self
         
@@ -69,6 +72,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func madeContactWithCleat()
     {
         
+        
+        score += 1
+        
+        print("\(score)")
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
@@ -98,8 +105,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // 1 
         var firstBody: SKPhysicsBody
         var secondBody: SKPhysicsBody
-        var score : Int
-        score = 0
+
         
         //2 
         if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask
@@ -121,8 +127,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if firstBody.categoryBitMask == juggleBallCategory && secondBody.categoryBitMask == jugglePaddleCategory
         {
-            score += 1
-            print("\(score)")
+            madeContactWithCleat()
             print("made contact")
         }
         
