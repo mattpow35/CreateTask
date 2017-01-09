@@ -21,8 +21,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //category bit masks
     let juggleBallCategory : UInt32 = 0x1 << 0
     let BottomCategory : UInt32 = 0x1 << 1
-    let jugglePaddleCategory : UInt32 = 0x1 << 2
     let borderCategory : UInt32 = 0x1 << 2
+    let jugglePaddleCategory : UInt32 = 0x1 << 3
     
     override func didMove(to view: SKView)
     {
@@ -54,7 +54,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         jugglePaddle.physicsBody!.categoryBitMask = juggleBallCategory
         border.categoryBitMask = borderCategory
         
-        juggleBall.physicsBody!.contactTestBitMask = jugglePaddleCategory
+        juggleBall.physicsBody!.contactTestBitMask = BottomCategory
         
         
      
@@ -122,10 +122,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             secondBody = contact.bodyA
         }
         //3
-        if firstBody.categoryBitMask == juggleBallCategory && secondBody.categoryBitMask == jugglePaddleCategory
+        if firstBody.categoryBitMask == juggleBallCategory && secondBody.categoryBitMask == BottomCategory
         {
-            score += 1
-            print("\(score)")
+
+            print("made contact with bottom")
         }
         
     }
