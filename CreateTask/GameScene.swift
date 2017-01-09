@@ -48,10 +48,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         bottom.physicsBody!.categoryBitMask = BottomCategory
         juggleBall.physicsBody!.categoryBitMask = juggleBallCategory
-        jugglePaddle.physicsBody!.categoryBitMask = juggleBallCategory
+        jugglePaddle.physicsBody!.categoryBitMask = jugglePaddleCategory
         border.categoryBitMask = borderCategory
         
         juggleBall.physicsBody!.contactTestBitMask = BottomCategory | jugglePaddleCategory
+        
         
         
         
@@ -63,6 +64,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         addChild(gravityNode)
     
+    }
+    
+    func madeContactWithCleat()
+    {
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
@@ -117,6 +123,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         {
             score += 1
             print("\(score)")
+            print("made contact")
         }
         
     }
