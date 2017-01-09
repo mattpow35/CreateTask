@@ -15,7 +15,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var jugglePaddle = SKSpriteNode()
     var difficultyLevel = Float()
     var background = SKSpriteNode()
-    var score = Int()
     var scoreLabel = SKLabelNode()
     
     //category bit masks
@@ -35,10 +34,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(bottom)
         
         let border = SKPhysicsBody(edgeLoopFrom: self.frame)
-        
         border.friction = 0
         border.restitution = 1
-        
         self.physicsBody = border
         
         
@@ -54,14 +51,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         jugglePaddle.physicsBody!.categoryBitMask = juggleBallCategory
         border.categoryBitMask = borderCategory
         
-        juggleBall.physicsBody!.contactTestBitMask = BottomCategory
-        
-        
-     
-        
-        score = 0
-        
-        scoreLabel.text = "Score: \(score)"
+        juggleBall.physicsBody!.contactTestBitMask = BottomCategory | jugglePaddleCategory
         
         
         
@@ -72,8 +62,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gravityNode.strength = difficultyLevel
         
         addChild(gravityNode)
-        
-        addScore()
     
     }
     
@@ -97,11 +85,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func addScore()
-    {
-        
-    }
-    
     func didBegin(_ contact: SKPhysicsContact)
     {
         
@@ -109,6 +92,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // 1 
         var firstBody: SKPhysicsBody
         var secondBody: SKPhysicsBody
+        var score : Int
+        score = 0
         
         //2 
         if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask
@@ -126,6 +111,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         {
 
             print("made contact with bottom")
+        }
+        
+        if firstBody.categoryBitMask == juggleBallCategory && secondBody.categoryBitMask == jugglePaddleCategory
+        {
+            score += 1
+            print("\(score)")
         }
         
     }
