@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var juggleBall = SKSpriteNode()
     var jugglePaddle = SKSpriteNode()
@@ -26,22 +26,13 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView)
     {
+        physicsWorld.gravity = CGVector(dx: 0.0, dy: 0.0)
+        physicsWorld.contactDelegate = self
+        
         let bottomRectangle = CGRect(x: frame.origin.x , y: frame.origin.y , width: frame.size.width, height: 1)
         let bottom = SKNode()
         bottom.physicsBody = SKPhysicsBody(edgeLoopFrom: bottomRectangle)
         addChild(bottom)
-        
-        difficultyLevel = 9.8
-        juggleBall = self.childNode(withName: "juggleBall") as! SKSpriteNode
-        jugglePaddle = self.childNode(withName: "jugglePaddle") as! SKSpriteNode
-        background = self.childNode(withName: "soccerBackground-1") as! SKSpriteNode
-        scoreLabel = self.childNode(withName: "scoreLabel") as! SKLabelNode
-        
-        score = 0
-        
-        scoreLabel.text = "Score: \(score)"
-        
-        
         
         let border = SKPhysicsBody(edgeLoopFrom: self.frame)
         
@@ -49,6 +40,31 @@ class GameScene: SKScene {
         border.restitution = 1
         
         self.physicsBody = border
+        
+        
+        difficultyLevel = 9.8
+        juggleBall = self.childNode(withName: "juggleBall") as! SKSpriteNode
+        jugglePaddle = self.childNode(withName: "jugglePaddle") as! SKSpriteNode
+        background = self.childNode(withName: "soccerBackground-1") as! SKSpriteNode
+        scoreLabel = self.childNode(withName: "scoreLabel") as! SKLabelNode
+        
+        
+        bottom.physicsBody!.categoryBitMask = BottomCategory
+        juggleBall.physicsBody!.categoryBitMask = juggleBallCategory
+        jugglePaddle.physicsBody!.categoryBitMask = juggleBallCategory
+        border.categoryBitMask = borderCategory
+        
+        juggleBall.physicsBody!.contactTestBitMask = jugglePaddleCategory
+        
+        
+     
+        
+        score = 0
+        
+        scoreLabel.text = "Score: \(score)"
+        
+        
+        
         
         let gravityField = vector_float3(0,-1,0)
         let gravityNode = SKFieldNode.linearGravityField(withVector: gravityField)
@@ -83,6 +99,34 @@ class GameScene: SKScene {
     
     func addScore()
     {
+        
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact)
+    {
+        
+        
+        // 1 
+        var firstBody: SKPhysicsBody
+        var secondBody: SKPhysicsBody
+        
+        //2 
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask
+        {
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+        }
+        else
+        {
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
+        }
+        //3
+        if firstBody.categoryBitMask == juggleBallCategory && secondBody.categoryBitMask == jugglePaddleCategory
+        {
+            score += 1
+            print("\(score)")
+        }
         
     }
 
