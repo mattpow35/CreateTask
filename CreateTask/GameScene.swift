@@ -74,7 +74,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         score += 1
-        
+        scoreLabel.text = "Score: \(score)"
         print("\(score)")
     }
     
