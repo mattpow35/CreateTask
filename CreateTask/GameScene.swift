@@ -44,7 +44,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsBody = border
         
         
-        difficultyLevel = 9.8
+        difficultyLevel = 7
         juggleBall = self.childNode(withName: "juggleBall") as! SKSpriteNode
         jugglePaddle = self.childNode(withName: "jugglePaddle") as! SKSpriteNode
         background = self.childNode(withName: "soccerBackground-1") as! SKSpriteNode
@@ -125,9 +125,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //3
         if firstBody.categoryBitMask == juggleBallCategory && secondBody.categoryBitMask == BottomCategory
         {
-            score = 0
-            scoreLabel.text = "Score: \(score)"
-
+            
             print("made contact with bottom")
         }
         
@@ -155,6 +153,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             highScore = score
             
             highScoreLabel.text = "Best: \(highScore)"
+        }
+        
+        if juggleBall.position.y <= jugglePaddle.position.y - 30
+        {
+            score = 0
+            scoreLabel.text = "Score: \(score)"
+            juggleBall.position = CGPoint(x: 0, y: 400)
+            juggleBall.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+            
         }
         
         
