@@ -17,6 +17,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var background = SKSpriteNode()
     var scoreLabel = SKLabelNode()
     var score = Int()
+    var highScoreLabel = SKLabelNode()
+    var highScore = Int()
     
     //category bit masks
     let juggleBallCategory : UInt32 = 0x1 << 0
@@ -47,7 +49,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         jugglePaddle = self.childNode(withName: "jugglePaddle") as! SKSpriteNode
         background = self.childNode(withName: "soccerBackground-1") as! SKSpriteNode
         scoreLabel = self.childNode(withName: "scoreLabel") as! SKLabelNode
-        
+        score = 0
+        scoreLabel.text = "Score: \(score)"
+        highScoreLabel = self.childNode(withName: "highScoreLabel") as! SKLabelNode
+        highScore = 0
+        highScoreLabel.text = "Best: \(highScore)"
         
         bottom.physicsBody!.categoryBitMask = BottomCategory
         juggleBall.physicsBody!.categoryBitMask = juggleBallCategory
@@ -71,8 +77,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func madeContactWithCleat()
     {
-        
-        
         score += 1
         scoreLabel.text = "Score: \(score)"
         print("\(score)")
@@ -121,6 +125,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //3
         if firstBody.categoryBitMask == juggleBallCategory && secondBody.categoryBitMask == BottomCategory
         {
+            score = 0
+            scoreLabel.text = "Score: \(score)"
 
             print("made contact with bottom")
         }
@@ -144,6 +150,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //           
 //        }
         
+        if score >= highScore
+        {
+            highScore = score
+            
+            highScoreLabel.text = "Best: \(highScore)"
+        }
         
         
     }
