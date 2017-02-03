@@ -63,9 +63,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         juggleBall.physicsBody!.contactTestBitMask = BottomCategory | jugglePaddleCategory
         
         
-        
-        
-        
         let gravityField = vector_float3(0,-1,0)
         let gravityNode = SKFieldNode.linearGravityField(withVector: gravityField)
         
@@ -75,12 +72,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     }
     
-    func madeContactWithCleat()
-    {
-        score += 1
-        scoreLabel.text = "Score: \(score)"
-        print("\(score)")
-    }
+ 
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
@@ -134,19 +126,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             madeContactWithCleat()
             print("made contact")
         }
-        
+      
     }
-
+    
+    func madeContactWithCleat()
+    {
+        score += 1
+        scoreLabel.text = "Score: \(score)"
+        print("\(score)")
+    }
  
 
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered\\
-        
-//        if juggleBall.position.y <= jugglePaddle.position.y - 70
-//        {
-//           
-//        }
         
         if score >= highScore
         {
@@ -154,6 +147,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             highScoreLabel.text = "Best: \(highScore)"
         }
+        /*
+            I would suggest starting the shoe back in the middle, but have a pause between when the game ends, and when it starts. Causing it to feel like a new game each time you lose.
+            I agree with the above comment. Perhaps attempt to implement some sort of reset variable.
+            use NSUser to store high score
+         */
         
         if juggleBall.position.y <= jugglePaddle.position.y - 30
         {
