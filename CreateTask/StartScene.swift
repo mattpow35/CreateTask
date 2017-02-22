@@ -12,9 +12,13 @@ class StartScene : SKScene
 {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
-        let gameSceneTemp = GameScene(fileNamed: "GameScene")
-        self.scene?.view?.presentScene(gameSceneTemp!, transition: SKTransition.doorsOpenHorizontal(withDuration: 1))
+        goToGameScreen()
     }
     
-    
+    func goToGameScreen()
+    {
+        let gameSceneTemp = GameScene(fileNamed: "GameScene")
+        
+        self.scene?.view?.presentScene(gameSceneTemp!, transition: SKTransition.doorsOpenHorizontal(withDuration: 1))
+    }
 }
