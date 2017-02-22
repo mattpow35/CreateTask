@@ -20,6 +20,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var highScoreLabel = SKLabelNode()
     var highScore = Int()
     
+    var startLabel = SKLabelNode()
+    
     //category bit masks
     let juggleBallCategory : UInt32 = 0x1 << 0
     let BottomCategory : UInt32 = 0x1 << 1
@@ -44,7 +46,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsBody = border
         
         
-        difficultyLevel = 7
+        difficultyLevel = 6
         juggleBall = self.childNode(withName: "juggleBall") as! SKSpriteNode
         jugglePaddle = self.childNode(withName: "jugglePaddle") as! SKSpriteNode
         background = self.childNode(withName: "soccerBackground-1") as! SKSpriteNode
@@ -62,20 +64,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         juggleBall.physicsBody!.contactTestBitMask = BottomCategory | jugglePaddleCategory
         
+        startLabel = self.childNode(withName: "startLabel") as! SKLabelNode
+        
+        
+        
+       
+    
+    }
+    
+    func beginGame()
+    {
+        startLabel.removeFromParent()
         
         let gravityField = vector_float3(0,-1,0)
         let gravityNode = SKFieldNode.linearGravityField(withVector: gravityField)
         
         gravityNode.strength = difficultyLevel
-        
         addChild(gravityNode)
-    
     }
-    
  
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
+        beginGame()
         for touch in touches
         {
             let location = touch.location(in: self)
