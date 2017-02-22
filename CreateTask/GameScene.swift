@@ -28,6 +28,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let borderCategory : UInt32 = 0x1 << 2
     let jugglePaddleCategory : UInt32 = 0x1 << 3
     
+    
+    
+
+    
     override func didMove(to view: SKView)
     {
         
@@ -76,9 +80,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     {
         startLabel.removeFromParent()
         
-        let gravityField = vector_float3(0,-1,0)
-        let gravityNode = SKFieldNode.linearGravityField(withVector: gravityField)
-        
+        let gravityNode = SKFieldNode.linearGravityField(withVector: vector_float3(0,-1,0))        
         gravityNode.strength = difficultyLevel
         addChild(gravityNode)
     }
@@ -170,6 +172,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             scoreLabel.text = "Score: \(score)"
             juggleBall.position = CGPoint(x: 0, y: 400)
             juggleBall.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+            
             
         }
         
