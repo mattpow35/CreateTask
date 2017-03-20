@@ -92,12 +92,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (score == 0)
         {
           beginGame()
+            for touch in touches
+            {
+                let location = touch.location(in: self)
+                
+                jugglePaddle.run(SKAction .moveTo(x: location.x, duration: 0.1))
+            }
         }
-        for touch in touches
+        else
         {
-            let location = touch.location(in: self)
+            for touch in touches
+            {
+                let location = touch.location(in: self)
             
-            jugglePaddle.run(SKAction .moveTo(x: location.x, duration: 0.1))
+                jugglePaddle.run(SKAction .moveTo(x: location.x, duration: 0.1))
+            }
         }
     }
     
